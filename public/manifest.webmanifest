@@ -1,0 +1,56 @@
+{
+  "name": "Yuval Zakay — YuvalCode",
+  "short_name": "YuvalCode",
+  "description": "יובל זכאי — מפתח, מורה ויוצר תוכן ישראלי. בונה מערכות AI, מלמד תכנות אמיתי, ומתעד את המסע בפומבי.",
+  "lang": "he",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#07080d",
+  "theme_color": "#07080d",
+  "categories": ["education", "developer", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Content",
+      "short_name": "Content",
+      "description": "האקוסיסטם של היוצר — 8 pillars",
+      "url": "/content"
+    },
+    {
+      "name": "AI",
+      "short_name": "AI",
+      "description": "Learn AI Tools track",
+      "url": "/ai"
+    },
+    {
+      "name": "Projects",
+      "short_name": "Projects",
+      "description": "Featured systems and case studies",
+      "url": "/projects"
+    },
+    {
+      "name": "Mahat Catalog",
+      "short_name": "מה״ט",
+      "description": "Mahat exam solutions",
+      "url": "/exams"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

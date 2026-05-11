@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(echo \"started, PID=$!\")",
+      "Bash(curl -s -o /dev/null -w \"GET / -> %{http_code}\\\\n\" http://localhost:4174/)",
+      "Bash(curl -s -o /dev/null -w \"GET /videos -> %{http_code}\\\\n\" http://localhost:4174/videos)",
+      "Bash(curl -s -o /dev/null -w \"GET /exams -> %{http_code}\\\\n\" http://localhost:4174/exams)",
+      "Bash(curl -s -o /dev/null -w \"GET /about -> %{http_code}\\\\n\" http://localhost:4174/about)",
+      "Bash(pkill -f \"vite preview\")",
+      "Bash(wait)",
+      "Bash(npx vite *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4173/)",
+      "Bash(curl -s -o /dev/null -w \"/ %{http_code}\\\\n\" http://localhost:4173/)",
+      "Bash(curl -s -o /dev/null -w \"/favicon.svg %{http_code}\\\\n\" http://localhost:4173/favicon.svg)",
+      "Bash(curl -s -o /dev/null -w \"/grid.svg %{http_code}\\\\n\" http://localhost:4173/grid.svg)",
+      "Bash(curl -s -o /dev/null -w \"/grid-pattern.svg %{http_code}\\\\n\" http://localhost:4173/grid-pattern.svg)",
+      "Bash(curl -s -o /dev/null -w \"/about %{http_code}\\\\n\" http://localhost:4173/about)",
+      "PowerShell($urls = @\\('http://localhost:4173/','http://localhost:4173/favicon.svg','http://localhost:4173/grid.svg','http://localhost:4173/grid-pattern.svg','http://localhost:4173/about','http://localhost:4173/contact'\\); foreach \\($u in $urls\\) { try { $r = Invoke-WebRequest -Uri $u -UseBasicParsing -Method Head; \"$\\($r.StatusCode\\) $u\" } catch { \"ERR $u $\\($_.Exception.Message\\)\" } })",
+      "PowerShell(Get-NetTCPConnection *)",
+      "PowerShell($urls = @\\('http://localhost:4173/','http://localhost:4173/about','http://localhost:4173/contact','http://localhost:4173/exams','http://localhost:4173/videos','http://localhost:4173/privacy','http://localhost:4173/terms','http://localhost:4173/coming-soon','http://localhost:4173/favicon.svg','http://localhost:4173/grid.svg','http://localhost:4173/grid-pattern.svg'\\); foreach \\($u in $urls\\) { try { $r = Invoke-WebRequest -Uri $u -UseBasicParsing -Method Head -TimeoutSec 5; \"$\\($r.StatusCode\\) $u\" } catch { \"ERR $u $\\($_.Exception.Message\\)\" } })",
+      "Bash(npx eslint *)",
+      "Bash(grep -E \"src.\\(components.editorial|pages.Content\\(Collection|Entry\\)|content\\\\\\\\\\\\\\\\|lib.editorial|components.content.EditorialCollectionsRail\\)\")",
+      "Bash(grep -A1 -E \"components\\\\\\\\\\\\\\\\editorial|components\\\\\\\\\\\\\\\\content\\\\\\\\\\\\\\\\Editorial|pages\\\\\\\\\\\\\\\\Content\\(Collection|Entry\\)|content\\\\\\\\\\\\\\\\|lib\\\\\\\\\\\\\\\\editorial\")",
+      "Bash(grep -E \"\\(editorial|ContentCollection|ContentEntry|EditorialCollectionsRail|src.content\\\\\\\\\\\\\\\\\\)\")",
+      "Bash(grep -A 3 \"components\\\\\\\\\\\\\\\\editorial\\\\\\\\\\\\\\\\CollectionGrid\")",
+      "Bash(npm install *)",
+      "PowerShell(npm install *)",
+      "PowerShell(npm run *)",
+      "Bash(grep -E \"\\(audience|src\\\\\\\\\\\\\\\\components\\\\\\\\\\\\\\\\audience|src\\\\\\\\\\\\\\\\lib\\\\\\\\\\\\\\\\audience|src\\\\\\\\\\\\\\\\pages\\\\\\\\\\\\\\\\\\(Home|AI|Projects|Content|Stack|ContentEntry\\)\\)\")",
+      "Bash(npx --no-install eslint src/components/Navbar.jsx)",
+      "Bash(npx --no-install eslint src/components/Navbar.jsx --rule '{\"no-unused-vars\": \"off\"}')",
+      "Bash(npx --no-install vite build)"
+    ]
+  }
+}

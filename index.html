@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07080d" />
+  <meta name="color-scheme" content="dark" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+
+  <!-- PWA manifest — installable foundations, no service-worker complexity yet -->
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="application-name" content="YuvalCode" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="YuvalCode" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <!-- Feed discoverability — root-level so RSS readers find every feed without crawling routes -->
+  <link rel="alternate" type="application/rss+xml" title="YuvalCode — Editorial (RSS)" href="/feeds/all.xml" />
+  <link rel="alternate" type="application/atom+xml" title="YuvalCode — Editorial (Atom)" href="/feeds/all.atom.xml" />
+  <link rel="alternate" type="application/feed+json" title="YuvalCode — Editorial (JSON Feed)" href="/feeds/all.json" />
+
+  <!-- Primary Meta -->
+  <title>Yuval Zakay — מורה לתכנות · לומד ובונה עם AI בפומבי · יוצר תוכן טכנולוגי</title>
+  <meta name="description" content="יובל זכאי — מורה לתכנות ויוצר תוכן ישראלי. לומד ובונה עם AI בפומבי, מלמד תכנות אמיתי, ומתעד את המסע לעולם הפיתוח של 2026 ואילך." />
+  <meta name="author" content="Yuval Zakay" />
+  <link rel="canonical" href="https://yuvalcode.co.il/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Yuval Zakay" />
+  <meta property="og:title" content="Yuval Zakay — מורה לתכנות · לומד ובונה עם AI בפומבי · יוצר תוכן טכנולוגי" />
+  <meta property="og:description" content="מורה לתכנות ויוצר תוכן ישראלי. לומד ובונה עם AI בפומבי, מלמד תכנות אמיתי, ומתעד את המסע לעולם הפיתוח של 2026 ואילך." />
+  <meta property="og:url" content="https://yuvalcode.co.il/" />
+  <meta property="og:image" content="https://yuvalcode.co.il/og-image.png" />
+  <meta property="og:locale" content="he_IL" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Yuval Zakay — מורה לתכנות · לומד ובונה עם AI בפומבי · יוצר תוכן טכנולוגי" />
+  <meta name="twitter:description" content="מורה לתכנות ויוצר תוכן ישראלי. לומד ובונה עם AI בפומבי, מלמד תכנות אמיתי, ומתעד את המסע לעולם הפיתוח של 2026 ואילך." />
+  <meta name="twitter:image" content="https://yuvalcode.co.il/og-image.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Preconnect to data endpoints used at runtime (YouTube API + thumbnails) -->
+  <link rel="preconnect" href="https://www.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+
+  <!-- JSON-LD Person schema — feeds Google Knowledge Panel + recruiter discovery -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yuval Zakay",
+    "alternateName": "יובל זכאי",
+    "url": "https://yuvalcode.co.il",
+    "image": "https://yuvalcode.co.il/og-image.png",
+    "jobTitle": "Software Educator · Learning & Building with AI in Public",
+    "description": "Israeli software educator and tech creator. Teaches programming and documents the journey of learning and building with AI in public — Claude Code, agents, modern dev tooling.",
+    "sameAs": [
+      "https://www.youtube.com/channel/UC0InPimb8JxKqhrH0CFWBwA"
+    ],
+    "knowsAbout": [
+      "C#",
+      ".NET",
+      "React",
+      "TypeScript",
+      "Python",
+      "AI Agents",
+      "Claude Code",
+      "Anthropic API",
+      "Software Education",
+      "Automation"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD Organization schema — supports brand discovery -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "YuvalCode",
+    "alternateName": "יובל זכאי",
+    "url": "https://yuvalcode.co.il",
+    "logo": "https://yuvalcode.co.il/favicon.svg",
+    "founder": { "@type": "Person", "name": "Yuval Zakay" },
+    "sameAs": [
+      "https://www.youtube.com/channel/UC0InPimb8JxKqhrH0CFWBwA"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD WebSite schema — enables sitelinks searchbox and identity -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "YuvalCode",
+    "alternateName": "Yuval Zakay",
+    "url": "https://yuvalcode.co.il",
+    "inLanguage": "he-IL",
+    "publisher": { "@type": "Person", "name": "Yuval Zakay" }
+  }
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

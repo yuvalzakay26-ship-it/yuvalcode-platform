@@ -1,0 +1,357 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    direction: rtl;
+
+    /* Premium dark surface system - Calm Luxury */
+    --bg-base: #030407;
+    --bg-surface-1: rgba(255, 255, 255, 0.02);
+    --bg-surface-2: rgba(255, 255, 255, 0.035);
+    --bg-surface-3: rgba(255, 255, 255, 0.05);
+    --hairline: rgba(255, 255, 255, 0.06);
+
+    /* Type */
+    --ink: #FAFAFA;
+    --ink-muted: #A1A1AA;
+    --ink-dim: #52525B;
+
+    /* Accents - Restrained */
+    --primary: 220 10% 80%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 220 10% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Motion - Controlled */
+    --ease-premium: cubic-bezier(0.2, 0, 0, 1);
+    --dur-micro: 300ms;
+    --dur-card: 500ms;
+    --dur-hero: 800ms;
+  }
+
+  body {
+    @apply bg-background text-ink font-sans antialiased overflow-x-hidden selection:bg-white/10 leading-relaxed;
+    font-feature-settings: "ss01", "cv11";
+    background-color: var(--bg-base);
+  }
+
+  /* Latin/numerics in headlines pick up Inter for sharper display */
+  h1, h2, h3, .font-display {
+    font-feature-settings: "ss01", "cv11", "tnum";
+    @apply leading-[1.15] tracking-tight;
+  }
+}
+
+@layer utilities {
+  /* =========================================
+     LIGHTING PSYCHOLOGY (3-Tier Intensity System)
+     Global Calm + Local Intensity
+     ========================================= */
+
+  /* 1. Silent Surface - Pure architectural calm. No bloom. */
+  .surface-silent {
+    background: var(--bg-surface-1);
+    border: 1px solid var(--hairline);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    transition: all 500ms var(--ease-premium);
+  }
+  .surface-silent:hover {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: var(--bg-surface-2);
+  }
+
+  /* 2. Warm Surface - Subconscious ambient light. Soft, physical warmth. */
+  .surface-warm {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-surface-1);
+    border: 1px solid var(--hairline);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    transition: all 700ms var(--ease-premium);
+  }
+  .surface-warm::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Very soft white/silver ambient lift */
+    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.04), transparent 70%);
+    opacity: 0;
+    transition: opacity 700ms var(--ease-premium), transform 700ms var(--ease-premium);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .surface-warm:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  }
+  .surface-warm:hover::before {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  /* 3. Active Intensity - Localized cinematic bloom. Earned, rare focus. */
+  .surface-active {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-surface-2);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    transition: all 700ms var(--ease-premium);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.6);
+  }
+  .surface-active::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Default cinematic bloom */
+    background: radial-gradient(circle at 50% -20%, var(--bloom-color, rgba(255, 255, 255, 0.06)), transparent 75%);
+    opacity: 0.6;
+    transition: opacity 700ms var(--ease-premium), transform 700ms var(--ease-premium);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .surface-active:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.9);
+    transform: translateY(-4px);
+  }
+  .surface-active:hover::before {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  /* =========================================
+     CARD ATMOSPHERE SYSTEM (Cinematic Bloom)
+     ========================================= */
+
+  .card-ambient {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-ambient::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    /* Soft corner/edge bloom basis: top right and bottom left */
+    background: radial-gradient(circle at 80% 20%, var(--bloom-color, rgba(255,255,255,0.02)) 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, var(--bloom-color, rgba(255,255,255,0.015)) 0%, transparent 40%);
+    opacity: 0.4;
+    filter: blur(24px);
+    transition: opacity 700ms var(--ease-premium), transform 700ms var(--ease-premium);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .card-ambient:hover::before {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    .card-ambient::before {
+      opacity: 0.15;
+    }
+    .card-ambient:hover::before {
+      opacity: 0.25;
+    }
+  }
+
+  /* Specific Intensity Blooms (Subtle, desaturated for low-light stability) */
+  .bloom-violet { --bloom-color: rgba(91, 33, 182, 0.25); } /* AI / Claude / Systems Thinking */
+  .bloom-blue { --bloom-color: rgba(30, 58, 138, 0.25); } /* Engineering / Architecture */
+  .bloom-amber { --bloom-color: rgba(120, 53, 15, 0.25); } /* Knowledge / Obsidian */
+  .bloom-cyan { --bloom-color: rgba(8, 145, 178, 0.20); } /* GitHub / Build in Public */
+  .bloom-crimson { --bloom-color: rgba(131, 24, 67, 0.25); } /* Algorithms / Complexity */
+  .bloom-magenta { --bloom-color: rgba(134, 25, 143, 0.25); } /* Creative / Media */
+
+  /* Ensure content sits above the embedded bloom */
+  .surface-content,
+  .card-content-layer {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* =========================================
+     END LIGHTING PSYCHOLOGY
+     ========================================= */
+
+  /* Unified glass system — restrained and structural */
+  .glass-panel-1 {
+    background: var(--bg-surface-1);
+    border: 1px solid var(--hairline);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+  .glass-panel-2 {
+    background: var(--bg-surface-2);
+    border: 1px solid var(--hairline);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02) inset, 0 10px 40px -10px rgba(0, 0, 0, 0.6);
+  }
+  .glass-panel-3 {
+    background: var(--bg-surface-3);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(40px) saturate(120%);
+    -webkit-backdrop-filter: blur(40px) saturate(120%);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 20px 60px -20px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Legacy alias */
+  .glass-panel {
+    @apply bg-surface/20 backdrop-blur-2xl border border-white/5 shadow-2xl;
+  }
+
+  /* Premium hairline divider */
+  .hairline {
+    background: linear-gradient(90deg, transparent, var(--hairline), transparent);
+    height: 1px;
+  }
+
+  /* Brand gradient — structural and muted silver/titanium */
+  .text-brand-gradient {
+    background-image: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-brand-gradient {
+    background-image: linear-gradient(135deg, #e4e4e7 0%, #a1a1aa 100%);
+  }
+
+  /* =========================================
+     CINEMATIC ACCENT TYPOGRAPHY
+     Global mapping system for emotional route identity.
+     ========================================= */
+
+  /* /ai - Subtle violet-indigo cinematic gradient */
+  .text-accent-ai {
+    background-image: linear-gradient(135deg, #c7d2fe 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  /* /projects - Warm violet/orange tension */
+  .text-accent-projects {
+    background-image: linear-gradient(135deg, #fed7aa 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* /content - Cinematic amber-violet */
+  .text-accent-content {
+    background-image: linear-gradient(135deg, #fde68a 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* /stack - Restrained electric blue-violet */
+  .text-accent-stack {
+    background-image: linear-gradient(135deg, #bae6fd 0%, #818cf8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* /work-with-me - Warm premium amber-violet */
+  .text-accent-work {
+    background-image: linear-gradient(135deg, #fcd34d 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Mobile saturation reduction for accents to preserve elegance on small screens */
+  @media (max-width: 768px) {
+    .text-accent-ai,
+    .text-accent-projects,
+    .text-accent-content,
+    .text-accent-stack,
+    .text-accent-work {
+       filter: saturate(0.7) brightness(1.05);
+    }
+  }
+
+  /* Subtle glow */
+  .text-glow {
+    text-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  }
+
+  .box-glow {
+    box-shadow: 0 0 40px -10px rgba(255, 255, 255, 0.05);
+  }
+
+  /* Architectural Mesh */
+  .mesh-bg {
+    background-image:
+      radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.03) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(255, 255, 255, 0.02) 0px, transparent 50%);
+  }
+
+  /* Marquee — seamless infinite scroll */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 60s linear infinite; /* Slower, more controlled */
+  }
+  .mask-fade {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  }
+
+  /* Premium primary-button shine sweep - Subtle */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.08) 50%,
+      transparent 60%
+    );
+    transform: translateX(-120%);
+    transition: transform 1000ms var(--ease-premium);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .btn-shine:hover::after {
+    transform: translateX(120%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-shine::after {
+    display: none !important;
+  }
+  /* Site animations + Tailwind built-ins. Stops every continuous loop. */
+  .animate-marquee,
+  .animate-pulse,
+  .animate-bounce,
+  .animate-spin {
+    animation: none !important;
+  }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

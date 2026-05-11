@@ -1,0 +1,20 @@
+# https://yuvalcode.co.il — robots policy
+User-agent: *
+Allow: /
+Disallow: /coming-soon
+Disallow: /coming-soon/
+
+Sitemap: https://yuvalcode.co.il/sitemap.xml
+
+# Editorial feeds — discovery surfaces for syndication clients.
+# Each editorial collection ships RSS, Atom, and JSON Feed serializations.
+# A global "all" feed aggregates every published entry.
+#
+# Feeds:
+#   /feeds/all.xml             /feeds/all.atom.xml             /feeds/all.json
+#   /feeds/articles.xml        /feeds/articles.atom.xml        /feeds/articles.json
+#   /feeds/ai-experiments.xml  /feeds/ai-experiments.atom.xml  /feeds/ai-experiments.json
+#   /feeds/workflows.xml       /feeds/workflows.atom.xml       /feeds/workflows.json
+#   /feeds/case-studies.xml    /feeds/case-studies.atom.xml    /feeds/case-studies.json
+#   /feeds/changelog.xml       /feeds/changelog.atom.xml       /feeds/changelog.json
+#   /feeds/research-notes.xml  /feeds/research-notes.atom.xml  /feeds/research-notes.json
