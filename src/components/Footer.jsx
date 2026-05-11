@@ -25,10 +25,10 @@ export function Footer() {
             ]
         },
         {
-            title: "תכנים",
+            title: "מערכות למידה",
             links: [
                 { name: "פתרונות מה״ט", path: "/exams" },
-                { name: "כל הסרטונים", path: "/videos" },
+                { name: "מוסד הלמידה", path: "/content" },
                 { name: "ערוץ היוטיוב", path: SITE.youtubeChannelUrl, external: true },
             ]
         }

@@ -1,44 +1,34 @@
 import { PageMeta } from "../components/PageMeta";
-import { ContentHero } from "../components/content/ContentHero";
-import { FeaturedContentHub } from "../components/content/FeaturedContentHub";
-import { EditorialCollectionsRail } from "../components/content/EditorialCollectionsRail";
-import { PillarExplorer } from "../components/content/PillarExplorer";
-import { ContentLearningPathways } from "../components/content/ContentLearningPathways";
-import { ContentTimeline } from "../components/content/ContentTimeline";
-import { ContentEcosystemRail } from "../components/content/ContentEcosystemRail";
-import { WhyPlatformExists } from "../components/content/WhyPlatformExists";
-import { ContentFinalCTA } from "../components/content/ContentFinalCTA";
+import { InstitutionalHero } from "../components/learning-hub/InstitutionalHero";
+import { PrimaryLearningTracks } from "../components/learning-hub/PrimaryLearningTracks";
+import { WhyLearnHere } from "../components/learning-hub/WhyLearnHere";
 import { SITE } from "../lib/constants";
-import { EcosystemSinceLastVisit, ExploreNext, FollowTheJourney } from "../components/audience";
+import { ExploreNext } from "../components/audience";
 
 export function Content() {
     return (
-        <div className="flex flex-col text-white overflow-hidden relative">
+        <div className="flex flex-col text-white overflow-hidden relative bg-black">
             <PageMeta
-                title="Content · האקוסיסטם של היוצר"
-                description="מרכז התוכן של YuvalCode — שמונה pillars (תכנות, AI, Claude Code, Anti Gravity, Obsidian, Building with AI, ועוד), מסלולי למידה, ציר זמן חי, ומערכת תוכן שמתעדת בנייה אמיתית בעידן AI."
+                title="Learning Hub · מוסד הלמידה"
+                description="מרכז הלמידה של YuvalCode. מסלולי התמחות מובנים, סביבות פיתוח מבוססות בינה מלאכותית, וחשיבה הנדסית ברמת ייצור."
                 path="/content"
-                keywords={["content ecosystem", "Hebrew tech publication", "Claude Code", "AI publishing", "creator OS"]}
+                keywords={["learning hub", "engineering institution", "Claude 101", "Claude Code", "courses"]}
                 breadcrumbs={[
                     { name: "בית", path: "/" },
-                    { name: "Content", path: "/content" },
+                    { name: "מוסד הלמידה", path: "/content" },
                 ]}
                 jsonLd={{
                     "@context": "https://schema.org",
                     "@type": "CollectionPage",
-                    "name": "Content · YuvalCode",
+                    "name": "Learning Hub · YuvalCode",
                     "url": `${SITE.url}/content`,
                     "inLanguage": "he-IL",
                     "about": [
                         "Programming",
-                        "C#",
-                        "Mahat Solutions",
-                        "AI Tools",
+                        "Claude 101",
                         "Claude Code",
-                        "Anti Gravity Systems",
-                        "Obsidian Knowledge Systems",
-                        "Building with AI",
-                        "The Creator Journey",
+                        "MAT Systems",
+                        "Engineering Architecture"
                     ],
                     "isPartOf": {
                         "@type": "WebSite",
@@ -48,18 +38,11 @@ export function Content() {
                 }}
             />
 
-            <ContentHero />
-            <FeaturedContentHub />
-            <EditorialCollectionsRail />
-            <EcosystemSinceLastVisit surfaceId="/content" />
-            <PillarExplorer />
-            <ContentLearningPathways />
-            <ContentTimeline />
-            <ContentEcosystemRail />
-            <WhyPlatformExists />
-            <FollowTheJourney surfaceId="/content" />
+            <InstitutionalHero />
+            <PrimaryLearningTracks />
+            <WhyLearnHere />
+            
             <ExploreNext currentPath="/content" surfaceId="/content" />
-            <ContentFinalCTA />
         </div>
     );
 }

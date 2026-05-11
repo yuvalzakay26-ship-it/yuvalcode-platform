@@ -64,7 +64,8 @@ export function Exams() {
                 path="/exams"
                 breadcrumbs={[
                     { name: "בית", path: "/" },
-                    { name: "קטלוג מה״ט", path: "/exams" },
+                    { name: "מוסד הלמידה", path: "/content" },
+                    { name: "MAT Systems", path: "/exams" },
                 ]}
                 jsonLd={{
                     "@context": "https://schema.org",

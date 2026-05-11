@@ -156,7 +156,8 @@ export function Videos() {
                 path="/videos"
                 breadcrumbs={[
                     { name: "בית", path: "/" },
-                    { name: "קטלוג מה״ט", path: "/exams" },
+                    { name: "מוסד הלמידה", path: "/content" },
+                    { name: "MAT Systems", path: "/exams" },
                     { name: selectedExam || "מאגר סרטונים", path: "/videos" },
                 ]}
             />

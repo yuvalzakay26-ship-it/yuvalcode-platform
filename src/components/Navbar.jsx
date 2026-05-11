@@ -7,6 +7,7 @@ import { YZMonogram } from "./ui/YZMonogram";
 import { SITE, WORK_WITH_ME_PATH } from "../lib/constants";
 import { SearchTrigger } from "./search/SearchTrigger";
 import { useSearchOptional } from "../lib/search/SearchContext";
+import { LearningDropdown } from "./LearningDropdown";
 
 // Canonical premium curve — mirrors --ease-premium (CSS) and EASE token (motion.js).
 const EASE = [0.16, 1, 0.3, 1];
@@ -16,7 +17,8 @@ const MOBILE_DRAWER_ID = "primary-mobile-drawer";
 // Primary tracks — surface as top-level desktop nav at lg+. Order is the editorial spine.
 // Hebrew-first for general routes, English preserved for the technical/brand tracks.
 const PRIMARY_LINKS = [
-    { name: "סרטונים", path: "/content" },
+    { name: "למידה", isDropdown: true },
+    { name: "מוסד הלמידה", path: "/content" },
     { name: "AI", path: "/ai" },
     { name: "פרויקטים", path: "/projects" },
     { name: "כלים", path: "/stack" },
@@ -163,39 +165,45 @@ export function Navbar() {
                     {/* Center nav — desktop only at lg+ */}
                     <div className="hidden lg:flex items-center gap-1 relative z-10">
                         {PRIMARY_LINKS.map((link) => (
-                            <NavLink
-                                key={link.path}
-                                to={link.path}
-                                end={link.path === "/"}
-                                className={({ isActive }) =>
-                                    cn(
-                                        "relative px-3.5 py-1.5 text-[13px] font-medium tracking-wide rounded-full group overflow-hidden",
-                                        "motion-safe:transition-colors duration-[250ms]",
-                                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
-                                        isActive ? "text-ink" : "text-ink-muted hover:text-ink"
-                                    )
-                                }
-                                style={{ transitionTimingFunction: "var(--ease-premium)" }}
-                            >
-                                {({ isActive }) => (
-                                    <>
-                                        <span
-                                            aria-hidden="true"
-                                            className="absolute inset-0 bg-white/[0.04] opacity-0 group-hover:opacity-100 rounded-full motion-safe:transition-opacity duration-[250ms]"
-                                            style={{ transitionTimingFunction: "var(--ease-premium)" }}
-                                        />
-                                        {isActive && (
-                                            <motion.span
+                            link.isDropdown ? (
+                                <LearningDropdown key="learning" isActive={location.pathname.startsWith('/courses')}>
+                                    {link.name}
+                                </LearningDropdown>
+                            ) : (
+                                <NavLink
+                                    key={link.path}
+                                    to={link.path}
+                                    end={link.path === "/"}
+                                    className={({ isActive }) =>
+                                        cn(
+                                            "relative px-3.5 py-1.5 text-[13px] font-medium tracking-wide rounded-full group overflow-hidden",
+                                            "motion-safe:transition-colors duration-[250ms]",
+                                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
+                                            isActive ? "text-ink" : "text-ink-muted hover:text-ink"
+                                        )
+                                    }
+                                    style={{ transitionTimingFunction: "var(--ease-premium)" }}
+                                >
+                                    {({ isActive }) => (
+                                        <>
+                                            <span
                                                 aria-hidden="true"
-                                                layoutId="nav-active"
-                                                className="absolute inset-0 rounded-full bg-white/[0.07] border border-white/[0.06]"
-                                                transition={{ duration: 0.4, ease: EASE }}
+                                                className="absolute inset-0 bg-white/[0.04] opacity-0 group-hover:opacity-100 rounded-full motion-safe:transition-opacity duration-[250ms]"
+                                                style={{ transitionTimingFunction: "var(--ease-premium)" }}
                                             />
-                                        )}
-                                        <span className="relative z-10" aria-current={isActive ? "page" : undefined}>{link.name}</span>
-                                    </>
-                                )}
-                            </NavLink>
+                                            {isActive && (
+                                                <motion.span
+                                                    aria-hidden="true"
+                                                    layoutId="nav-active"
+                                                    className="absolute inset-0 rounded-full bg-white/[0.07] border border-white/[0.06]"
+                                                    transition={{ duration: 0.4, ease: EASE }}
+                                                />
+                                            )}
+                                            <span className="relative z-10" aria-current={isActive ? "page" : undefined}>{link.name}</span>
+                                        </>
+                                    )}
+                                </NavLink>
+                            )
                         ))}
                     </div>
 
@@ -360,52 +368,79 @@ export function Navbar() {
                                 </span>
                             </Link>
 
-                            <nav aria-label="ניווט מובייל" className="flex flex-col relative z-10">
-                                {/* Primary tracks — numbered, larger, the editorial spine */}
-                                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink-dim mb-3 ps-1">ניווט</p>
-                                <ul className="flex flex-col gap-1">
-                                    {PRIMARY_LINKS.map((link, i) => (
-                                        <li key={link.path}>
-                                            <NavLink
-                                                to={link.path}
-                                                end={link.path === "/"}
-                                                onClick={closeDrawer}
-                                                className={({ isActive }) =>
-                                                    cn(
-                                                        "group/item flex items-center justify-between min-h-[52px] px-4 rounded-xl text-lg font-medium border border-transparent",
-                                                        "motion-safe:transition-[background-color,border-color,color] duration-[250ms]",
-                                                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
-                                                        isActive
-                                                            ? "bg-white/[0.05] text-ink border-white/[0.08]"
-                                                            : "text-ink-muted hover:text-ink hover:bg-white/[0.03]"
-                                                    )
-                                                }
-                                                style={{ transitionTimingFunction: "var(--ease-premium)" }}
-                                            >
-                                                {({ isActive }) => (
-                                                    <>
-                                                        <span className="flex items-center gap-4" aria-current={isActive ? "page" : undefined}>
+                                <nav aria-label="ניווט מובייל" className="flex flex-col relative z-10">
+                                    {/* Primary tracks — numbered, larger, the editorial spine */}
+                                    <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink-dim mb-3 ps-1">ניווט</p>
+                                    <ul className="flex flex-col gap-1">
+                                        {PRIMARY_LINKS.map((link, i) => (
+                                            link.isDropdown ? (
+                                                <li key="learning-mobile">
+                                                    <div className="group/item flex flex-col min-h-[52px] px-4 py-3 rounded-xl border border-transparent bg-white/[0.02]">
+                                                        <div className="flex items-center gap-4 mb-3">
                                                             <span aria-hidden="true" dir="ltr" className="font-mono text-[11px] text-ink-dim tabular-nums">
                                                                 {String(i + 1).padStart(2, "0")}
                                                             </span>
-                                                            <span className="tracking-normal">{link.name}</span>
-                                                        </span>
-                                                        <span
-                                                            aria-hidden="true"
-                                                            className={cn(
-                                                                "h-1.5 w-1.5 rounded-full motion-safe:transition-[background-color,opacity] duration-[250ms]",
+                                                            <span className="tracking-normal text-lg font-medium text-ink">{link.name}</span>
+                                                        </div>
+                                                        <div className="flex flex-col gap-2 ps-8">
+                                                            <NavLink to="/courses/claude-101" onClick={closeDrawer} className={({isActive}) => cn("text-[15px] transition-colors", isActive ? "text-amber-400" : "text-ink-muted hover:text-ink")}>
+                                                                Claude 101
+                                                            </NavLink>
+                                                            <NavLink to="/courses/claude-code" onClick={closeDrawer} className={({isActive}) => cn("text-[15px] transition-colors", isActive ? "text-indigo-400" : "text-ink-muted hover:text-ink")}>
+                                                                Claude Code
+                                                            </NavLink>
+                                                            <span className="text-[15px] text-ink-dim/50 cursor-not-allowed">
+                                                                Cloud Systems
+                                                            </span>
+                                                            <span className="text-[15px] text-ink-dim/50 cursor-not-allowed">
+                                                                MAT Systems
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            ) : (
+                                                <li key={link.path}>
+                                                    <NavLink
+                                                        to={link.path}
+                                                        end={link.path === "/"}
+                                                        onClick={closeDrawer}
+                                                        className={({ isActive }) =>
+                                                            cn(
+                                                                "group/item flex items-center justify-between min-h-[52px] px-4 rounded-xl text-lg font-medium border border-transparent",
+                                                                "motion-safe:transition-[background-color,border-color,color] duration-[250ms]",
+                                                                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
                                                                 isActive
-                                                                    ? "bg-primary opacity-100"
-                                                                    : "bg-white/20 opacity-0 group-hover/item:opacity-60"
-                                                            )}
-                                                            style={{ transitionTimingFunction: "var(--ease-premium)" }}
-                                                        />
-                                                    </>
-                                                )}
-                                            </NavLink>
-                                        </li>
-                                    ))}
-                                </ul>
+                                                                    ? "bg-white/[0.05] text-ink border-white/[0.08]"
+                                                                    : "text-ink-muted hover:text-ink hover:bg-white/[0.03]"
+                                                            )
+                                                        }
+                                                        style={{ transitionTimingFunction: "var(--ease-premium)" }}
+                                                    >
+                                                        {({ isActive }) => (
+                                                            <>
+                                                                <span className="flex items-center gap-4" aria-current={isActive ? "page" : undefined}>
+                                                                    <span aria-hidden="true" dir="ltr" className="font-mono text-[11px] text-ink-dim tabular-nums">
+                                                                        {String(i + 1).padStart(2, "0")}
+                                                                    </span>
+                                                                    <span className="tracking-normal">{link.name}</span>
+                                                                </span>
+                                                                <span
+                                                                    aria-hidden="true"
+                                                                    className={cn(
+                                                                        "h-1.5 w-1.5 rounded-full motion-safe:transition-[background-color,opacity] duration-[250ms]",
+                                                                        isActive
+                                                                            ? "bg-primary opacity-100"
+                                                                            : "bg-white/20 opacity-0 group-hover/item:opacity-60"
+                                                                    )}
+                                                                    style={{ transitionTimingFunction: "var(--ease-premium)" }}
+                                                                />
+                                                            </>
+                                                        )}
+                                                    </NavLink>
+                                                </li>
+                                            )
+                                        ))}
+                                    </ul>
 
                                 {/* Hairline divider — gradient, subtler than a flat border */}
                                 <div aria-hidden="true" className="hairline my-6 opacity-70" />

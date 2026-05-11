@@ -30,6 +30,11 @@ const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const NotFound = lazy(() => import("./pages/NotFound").then(m => ({ default: m.NotFound })));
 
+// Course Worlds
+const CourseClaudeCode = lazy(() => import("./pages/courses/ClaudeCode").then(m => ({ default: m.ClaudeCode })));
+const CourseClaude101 = lazy(() => import("./pages/courses/Claude101").then(m => ({ default: m.Claude101 })));
+const CourseClaude101AccessHub = lazy(() => import("./pages/courses/Claude101AccessHub").then(m => ({ default: m.Claude101AccessHub })));
+
 // Search modal is mounted globally but only loaded the first time it opens.
 const SearchModal = lazy(() => import("./components/search/SearchModal"));
 
@@ -93,6 +98,12 @@ function App() {
                     <Route path="contact" element={<Contact />} />
                     <Route path="privacy" element={<Privacy />} />
                     <Route path="terms" element={<Terms />} />
+                    
+                    {/* Course Worlds */}
+                    <Route path="courses/claude-code" element={<CourseClaudeCode />} />
+                    <Route path="courses/claude-101" element={<CourseClaude101 />} />
+                    <Route path="courses/claude-101/access" element={<CourseClaude101AccessHub />} />
+                    
                     {/* Legacy routes — redirect rather than 404 to preserve any external links */}
                     <Route path="coming-soon" element={<Navigate to="/" replace />} />
                     <Route path="*" element={<NotFound />} />
