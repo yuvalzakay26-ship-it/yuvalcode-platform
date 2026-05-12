@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { AmberSmokeAtmosphere } from './AmberSmokeAtmosphere';
+import { IndigoSmokeAtmosphere } from './IndigoSmokeAtmosphere';
 
 export function CourseWorldLayout({ children, identity }) {
     useEffect(() => {
@@ -12,6 +14,9 @@ export function CourseWorldLayout({ children, identity }) {
 
     return (
         <div className={`relative min-h-screen w-full overflow-hidden ${identity.baseBg}`}>
+            {identity.id === "claude-101" && <AmberSmokeAtmosphere />}
+            {identity.id === "claude-code" && <IndigoSmokeAtmosphere />}
+            
             {/* Global Cinematic Volumetric Light */}
             <div 
                 className={`absolute top-[-10%] left-1/2 -translate-x-1/2 w-[120%] md:w-[800px] h-[600px] md:h-[800px] opacity-[0.08] blur-[100px] md:blur-[140px] pointer-events-none transform-gpu ${identity.glowColor}`} 

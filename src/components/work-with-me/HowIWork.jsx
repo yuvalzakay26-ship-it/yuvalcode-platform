@@ -13,62 +13,52 @@ const EASE = [0.16, 1, 0.3, 1];
 
 const STEPS = [
     {
-        id: "intro",
-        marker: "Step · 01",
-        title: "שיחת היכרות.",
+        id: "systems-thinking",
+        marker: "Principle · 01",
+        title: "Systems Thinking.",
         body:
-            "מתחילים בשיחה אחת — בלי דחיפה, בלי הצעת מחיר. מבינים מי אתם, מה אתם בונים, ואם יש כאן התאמה לשיתוף פעולה אמיתי. אם אין — נגיד את זה ישר.",
-        tags: ["Discovery", "Honest Fit"],
-        icon: MessageSquare,
-        tone: "open",
-    },
-    {
-        id: "scope",
-        marker: "Step · 02",
-        title: "מיפוי scope ומטרות.",
-        body:
-            "אחרי שאני מבין את ההקשר, אני מחזיר מסמך scope קצר — מטרות, deliverables, סיכונים, וקריטריונים להצלחה. זה מסמך שניתן לדון בו, לא חוזה אטום.",
-        tags: ["Clarity", "Written-down"],
-        icon: Compass,
-        tone: "plan",
-    },
-    {
-        id: "systems",
-        marker: "Step · 03",
-        title: "חשיבה systems-first.",
-        body:
-            "כל פרויקט מתחיל בשרטוט המערכת — איך החלקים מדברים, מה ה-edge cases, איפה אפשר לקצר, ואיפה אסור. ה-arch נכתב לפני הקוד.",
+            "אני לא כותב קוד לפני שאני מבין את המערכת. כל פרויקט מתחיל במיפוי הזרימה, ה-Edge Cases, והארכיטקטורה הכוללת. המטרה היא לבנות משהו שמחזיק מעמד לאורך זמן, לא סתם לפתור באג מקומי.",
         tags: ["Architecture", "Long-term"],
         icon: Layers,
         tone: "build",
     },
     {
-        id: "execution",
-        marker: "Step · 04",
-        title: "ביצוע מתועד.",
+        id: "experimentation",
+        marker: "Principle · 02",
+        title: "Experimentation.",
         body:
-            "העבודה מתבצעת ב-cycles קצרים — שבוע, סקירה, התאמה. כל החלטה אדריכלית נכתבת ב-decision record. אתם רואים את ההתקדמות בזמן אמת, לא רק בסוף.",
-        tags: ["Iterations", "Decision Records"],
+            "טכנולוגיה, ובמיוחד AI, משתנה בקצב מסחרר. העבודה שלי מבוססת על ניסויים מתמידים — לבדוק מה עובד, לזרוק את מה שלא, ולמצוא את הדרך הנכונה ביותר להטמיע את הכלים החדשים בתהליכים אמיתיים.",
+        tags: ["Discovery", "AI-Native"],
+        icon: Compass,
+        tone: "plan",
+    },
+    {
+        id: "iteration",
+        marker: "Principle · 03",
+        title: "Iteration.",
+        body:
+            "בנייה היא לא קו ישר. זה תהליך איטרטיבי של משוב, תיקון ודיוק. כל גרסה טובה יותר מהקודמת, וכל שלב מקרב אותנו למערכת יציבה וחזקה יותר.",
+        tags: ["Feedback", "Cycles"],
         icon: Workflow,
         tone: "execute",
     },
     {
-        id: "documentation",
-        marker: "Step · 05",
-        title: "תיעוד שמחזיק.",
+        id: "learning-in-public",
+        marker: "Principle · 04",
+        title: "Learning in Public.",
         body:
-            "הפרויקט יוצא איתכם עם vault מתועד — לקחים, scripts, decisions, ו-roadmap להמשך. כדי שגם בעוד שנה תוכלו להבין למה הדברים נראים ככה.",
-        tags: ["Hand-off", "Vault"],
-        icon: FileText,
-        tone: "doc",
+            "אני מאמין ששיתוף הידע הוא הדרך הטובה ביותר ללמוד. הרבה מהתהליכים שאני בונה הופכים לשיעורים בערוץ, כדי שגם אחרים יוכלו להבין, להעתיק, ולשפר את איך שהם בונים.",
+        tags: ["Education", "Transparency"],
+        icon: MessageSquare,
+        tone: "open",
     },
     {
         id: "long-term",
-        marker: "Step · 06",
-        title: "המשך הקשר.",
+        marker: "Principle · 05",
+        title: "Long-term Thinking.",
         body:
-            "סיום פרויקט הוא לא סוף השיחה. אני נשאר זמין ל-check-ins, retrospectives, ו-iteration שניה — כי הקשרים הטובים ביותר נמדדים בשנים, לא ב-deliverables.",
-        tags: ["Long-term", "Check-ins"],
+            "אני לא מחפש פרויקטים של 'זבנג וגמרנו'. הקשרים שאני בונה הם לטווח ארוך — בין אם זה ליווי של מפתח, ייעוץ לצוות או בנייה של תשתית מורכבת.",
+        tags: ["Partnerships", "Growth"],
         icon: Repeat2,
         tone: "loop",
     },
@@ -112,14 +102,14 @@ export function HowIWork() {
                             id="how-i-work-heading"
                             className="text-4xl md:text-5xl font-black tracking-normal text-white mb-5 leading-[1.05]"
                         >
-                            איך עובדים יחד <span className="text-brand-gradient">בפועל</span>.
+                            איך אני עובד <span className="text-brand-gradient">בפועל</span>.
                         </h2>
                         <p className="text-lg text-ink-muted leading-relaxed mb-6">
-                            השיטה הזו לא חיה ב-deck. היא נבנתה לאורך שנים של הוראה, בנייה, ופרסום, והיא המבנה שמאחורי כל שיתוף פעולה כאן.
+                            הגישה שלי לבנייה מבוססת על ניסויים, חשיבה מערכתית ולמידה פומבית. אלה העקרונות שמובילים כל פרויקט או מערכת שאני יוצר.
                         </p>
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel-1 text-[10.5px] font-mono uppercase tracking-[0.22em] text-ink-muted">
                             <span className="h-1.5 w-1.5 rounded-full bg-primary-400" />
-                            6 steps · 1 conversation
+                            5 Core Principles
                         </div>
                     </div>
 

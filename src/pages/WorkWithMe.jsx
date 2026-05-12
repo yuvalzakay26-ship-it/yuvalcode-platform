@@ -1,21 +1,17 @@
 import { PageMeta } from "../components/PageMeta";
 import { WorkWithMeHero } from "../components/work-with-me/WorkWithMeHero";
-import { CollaborationPathways } from "../components/work-with-me/CollaborationPathways";
+import { WhatIBuild } from "../components/work-with-me/WhatIBuild";
 import { HowIWork } from "../components/work-with-me/HowIWork";
-import { CurrentFocus } from "../components/work-with-me/CurrentFocus";
-import { TrustAuthorityLayer } from "../components/work-with-me/TrustAuthorityLayer";
-import { ConnectionEcosystem } from "../components/work-with-me/ConnectionEcosystem";
-import { WhyIBuildPublicly } from "../components/work-with-me/WhyIBuildPublicly";
+import { WhoThisFits } from "../components/work-with-me/WhoThisFits";
 import { ContactExperience } from "../components/work-with-me/ContactExperience";
-import { WorkWithMeFinalCTA } from "../components/work-with-me/WorkWithMeFinalCTA";
 import { SITE } from "../lib/constants";
 
 export function WorkWithMe() {
     return (
         <div className="flex flex-col text-white overflow-hidden relative">
             <PageMeta
-                title="Work With Me · שיתופי פעולה, הוראה, וניסויי AI"
-                description="מערכת שיתופי הפעולה של Yuval Zakay — Creator Collaborations, ניסויי AI ו-Workflows משותפים, Private Lessons, Educational Partnerships, ו-Sponsorships עתידיים. מרחב לעבוד יחד עם יוצרים, אנשי מקצוע, וצוותים שחוקרים פיתוח AI-native."
+                title="Work With Me · בניית מערכות, הוראה, וניסויי AI"
+                description="מי אני, מה אני בונה, ואיך אפשר לעבוד יחד. מערכות למידה, AI-native workflows, ותשתיות תוכן. הזמנה כנה לאנשים שרוצים לבנות פרויקטים אמיתיים."
                 path="/work-with-me"
                 breadcrumbs={[
                     { name: "בית", path: "/" },
@@ -29,11 +25,10 @@ export function WorkWithMe() {
                     "inLanguage": "he-IL",
                     "areaServed": "IL",
                     "serviceType": [
-                        "Creator Collaborations",
-                        "AI & Workflow Experiments",
-                        "Private Lessons & Mentorship",
-                        "Educational Partnerships",
-                        "Sponsorships",
+                        "Building Real Systems",
+                        "AI-Native Workflows",
+                        "Technical Education",
+                        "System Architecture",
                     ],
                     "provider": {
                         "@type": "Person",
@@ -50,14 +45,10 @@ export function WorkWithMe() {
             />
 
             <WorkWithMeHero />
-            <CollaborationPathways />
+            <WhatIBuild />
             <HowIWork />
-            <CurrentFocus />
-            <TrustAuthorityLayer />
-            <ConnectionEcosystem />
-            <WhyIBuildPublicly />
+            <WhoThisFits />
             <ContactExperience />
-            <WorkWithMeFinalCTA />
         </div>
     );
 }

@@ -17,6 +17,7 @@ const MOBILE_DRAWER_ID = "primary-mobile-drawer";
 // Primary tracks — surface as top-level desktop nav at lg+. Order is the editorial spine.
 // Hebrew-first for general routes, English preserved for the technical/brand tracks.
 const PRIMARY_LINKS = [
+    { name: "בית", path: "/" },
     { name: "למידה", isDropdown: true },
     { name: "מוסד הלמידה", path: "/content" },
     { name: "AI", path: "/ai" },
@@ -26,7 +27,6 @@ const PRIMARY_LINKS = [
 
 // Secondary surfaces — drawer-only. Logo already serves as the home affordance on desktop.
 const SECONDARY_LINKS = [
-    { name: "בית", path: "/" },
     { name: "מבחני מה״ט", path: "/exams" },
     { name: "אודות", path: "/about" },
     { name: "צור קשר", path: "/contact" },

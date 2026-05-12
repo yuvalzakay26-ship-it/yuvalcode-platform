@@ -6,18 +6,18 @@ import { Button } from "../ui/Button";
 const EASE = [0.16, 1, 0.3, 1];
 
 const FLOATING_KEYWORDS = [
-    { label: "collaborations", x: "6%", y: "18%", delay: 1.8 },
-    { label: "consulting", x: "84%", y: "22%", delay: 1.9 },
-    { label: "mentorship", x: "8%", y: "76%", delay: 2.0 },
-    { label: "partnerships", x: "82%", y: "72%", delay: 2.1 },
-    { label: "ai-native dev", x: "50%", y: "10%", delay: 2.2 },
-    { label: "long-term", x: "48%", y: "88%", delay: 2.3 },
+    { label: "systems", x: "6%", y: "18%", delay: 1.8 },
+    { label: "building", x: "84%", y: "22%", delay: 1.9 },
+    { label: "learning", x: "8%", y: "76%", delay: 2.0 },
+    { label: "workflows", x: "82%", y: "72%", delay: 2.1 },
+    { label: "ai-native", x: "50%", y: "10%", delay: 2.2 },
+    { label: "experiments", x: "48%", y: "88%", delay: 2.3 },
 ];
 
 const TRUST_SIGNALS = [
-    "Selective collaborations",
-    "Long-term thinking",
-    "AI-assisted workflows",
+    "Building real systems",
+    "Learning in public",
+    "AI-native workflows",
 ];
 
 function FloatingKeyword({ label, x, y, delay, reduced, isMobile }) {
@@ -166,8 +166,8 @@ export function WorkWithMeHero() {
                     >
                         <Handshake className="h-3.5 w-3.5 text-primary-300" strokeWidth={2} aria-hidden="true" />
                         <span dir="ltr" className="text-[11px] sm:text-[12px] font-mono tracking-[0.22em] uppercase text-ink-muted">
-                            Work With Me <span className="text-ink-dim mx-1.5">·</span> 2026
-                            <span className="text-ink-dim mx-1.5">·</span> Open to the right opportunities
+                            Work With Me <span className="text-ink-dim mx-1.5">·</span> מי אני ומה אני בונה
+                            <span className="text-ink-dim mx-1.5">·</span> 2026
                         </span>
                     </motion.div>
 
@@ -180,13 +180,13 @@ export function WorkWithMeHero() {
                         className="font-display text-5xl sm:text-5xl lg:text-5xl xl:text-5xl font-black tracking-normal mb-7 leading-[1.02]"
                     >
                         <span className="block bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-300 drop-shadow-2xl">
-                            בוא נבנה משהו <span className="text-accent-work text-glow">משמעותי</span>.
+                            בונה מערכות <span className="text-accent-work text-glow">אמיתיות</span> עם AI.
                         </span>
                         <span className="block bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-300">
-                            שיתופי פעולה. AI. הוראה.
+                            למידה. התנסות. חשיבה מערכתית.
                         </span>
                         <span className="block bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-400">
-                            Long-term partnerships.
+                            Grounded. Personal. Real.
                         </span>
                     </motion.h1>
 
@@ -197,8 +197,7 @@ export function WorkWithMeHero() {
                         transition={{ duration: isMobile ? 1.0 : 1.2, delay: isMobile ? 0.9 : 1.2, ease: EASE }}
                         className="text-lg lg:text-xl text-ink-muted max-w-2xl mx-auto mb-9 leading-relaxed"
                     >
-                        זה לא דף שירותים — זה <span className="text-ink font-medium">מרחב שיתוף פעולה</span> ליוצרים,
-                        אנשי מקצוע, וצוותים שחוקרים פיתוח AI-native. נבחרים בקפידה, נבנים לאורך זמן, ומחוברים לאקוסיסטם החי של הערוץ.
+                        זה לא מותג של ייעוץ אנטרפרייז — אני בונה תשתיות, חוקר AI, ומלמד מערכות עבודה. המרחב הזה נועד כדי <span className="text-ink font-medium">לבנות וללמוד יחד</span> עם האנשים הנכונים.
                     </motion.p>
 
                     {/* Trust signals strip */}
@@ -234,13 +233,12 @@ export function WorkWithMeHero() {
                                 className="w-full sm:w-auto gap-2.5 px-7 text-[15px]"
                             >
                                 <MessageCircle className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-                                Start a Conversation
+                                בואו נבנה יחד
                             </Button>
                         </a>
 
                         <a
-                            href="#collaboration-pathways"
-                            onClick={handleScrollToPathways}
+                            href="/courses/claude-101/access"
                             className="w-full sm:w-auto"
                         >
                             <Button
@@ -249,7 +247,7 @@ export function WorkWithMeHero() {
                                 className="w-full sm:w-auto gap-2.5 px-7 text-[15px] border-white/15 hover:border-white/25 backdrop-blur-sm"
                             >
                                 <Compass className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
-                                Explore the Ecosystem
+                                היכנס למוסד הלמידה
                             </Button>
                         </a>
                     </motion.div>
@@ -270,12 +268,12 @@ export function WorkWithMeHero() {
                                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                                 </span>
                                 <span className="text-[13px] text-ink-muted text-right truncate">
-                                    זמין לשיחות שיתוף פעולה ראשונות.
+                                    פתוח לשיחות על פרויקטים ומערכות חדשות.
                                 </span>
                             </div>
                             <span dir="ltr" className="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.22em] text-ink-dim shrink-0">
                                 <Sparkles className="h-3 w-3" strokeWidth={2} aria-hidden="true" />
-                                Selective · Long-term
+                                Direct · Authentic
                             </span>
                         </div>
                     </motion.div>

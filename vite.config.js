@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
-    open: process.platform === 'win32' ? 'chrome' : true,
+    open: true,
   },
   build: {
     // Stop emitting source maps to production for now (smaller deploys, no leaks).

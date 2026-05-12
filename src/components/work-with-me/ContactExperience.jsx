@@ -19,9 +19,9 @@ const CHANNELS = [
     {
         id: "form",
         eyebrow: "Primary channel",
-        title: "טופס שיחה",
-        body: "המקום הכי טוב להתחיל — בטופס בוחרים את ה-pathway המתאים, ואני חוזר תוך כמה ימי עבודה.",
-        cta: "פתח את הטופס",
+        title: "בקשת שיתוף פעולה",
+        body: "טופס קצר כדי להבין מה אתם בונים ואיך אפשר לעזור. בלי flow של מכירות, רק תיאום ציפיות.",
+        cta: "שלח פנייה",
         icon: MessageSquare,
         href: RECRUITER_CONTACT_PATH,
         internal: true,
@@ -56,8 +56,8 @@ const CHANNELS = [
     {
         id: "whatsapp",
         eyebrow: "Community",
-        title: "WhatsApp",
-        body: "קהילה לא רשמית — שאלות מהירות, שיחות בונים, וחיבורים אורגניים.",
+        title: "קהילה ו-WhatsApp",
+        body: "המקום לשאלות מהירות, התייעצות פתוחה, וחיבורים אמיתיים עם בונים אחרים.",
         cta: "הצטרף לקהילה",
         icon: MessagesSquare,
         href: WHATSAPP_LINK,
@@ -183,8 +183,8 @@ export function ContactExperience() {
                             בוא <span className="text-brand-gradient">נדבר</span>.
                         </h2>
                         <p className="text-lg text-ink-muted leading-relaxed mb-7">
-                            כל שיתוף פעולה כאן מתחיל בשיחה אחת — בלי טפסים אגרסיביים, בלי flow של sales, בלי לחץ.
-                            ספרו מה אתם בונים, מה אתם מחפשים, ומה הקצב שמתאים לכם.
+                            בלי משפכי מכירות, בלי אנשי קשר זמניים.
+                            אני קורא כל הודעה בעצמי. ספרו מה אתם בונים, ואיך אתם חושבים שאפשר לעבוד יחד.
                         </p>
 
                         <div className="space-y-3">
