@@ -355,3 +355,63 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* =========================================
+   Core Learning Shell scoped utilities
+   ========================================= */
+.learning-shell .learning-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.10) transparent;
+}
+.learning-shell .learning-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.learning-shell .learning-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.learning-shell .learning-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+  transition: background 0.3s var(--ease-premium);
+}
+.learning-shell .learning-scroll:hover::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Hebrew-first typography polish, scoped to the learning shell.
+   - Headings: balanced wrap, no tight tracking (Hebrew letterforms break under negative tracking).
+   - Prose: pretty wrap prevents single-word orphan lines.
+   - Numeric strings stay LTR even inside RTL paragraphs. */
+.learning-shell h1,
+.learning-shell h2,
+.learning-shell h3,
+.learning-shell h4 {
+  text-wrap: balance;
+  letter-spacing: 0;
+}
+.learning-shell .lesson-prose p,
+.learning-shell .lesson-objective {
+  text-wrap: pretty;
+}
+.learning-shell .lesson-prose p {
+  font-feature-settings: "kern" 1, "calt" 1;
+}
+
+/* Calm "breathing" pulse for the active lesson marker.
+   Slow, steady, ambient — never twitchy. Replaces the old animate-ping
+   which read as a console/runtime status light. */
+@keyframes lesson-active-breath {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%      { opacity: 0.85; transform: scale(1.6); }
+}
+.learning-shell .lesson-active-breath {
+  animation: lesson-active-breath 3.6s cubic-bezier(0.4, 0, 0.4, 1) infinite;
+  filter: blur(2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .learning-shell .lesson-active-breath {
+    animation: none !important;
+    opacity: 0.45 !important;
+  }
+}

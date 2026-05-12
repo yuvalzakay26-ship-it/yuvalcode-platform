@@ -35,6 +35,12 @@ const CourseClaudeCode = lazy(() => import("./pages/courses/ClaudeCode").then(m 
 const CourseClaude101 = lazy(() => import("./pages/courses/Claude101").then(m => ({ default: m.Claude101 })));
 const CourseClaude101AccessHub = lazy(() => import("./pages/courses/Claude101AccessHub").then(m => ({ default: m.Claude101AccessHub })));
 
+// Runtimes
+const ClaudeCodeRuntime = lazy(() => import("./pages/runtime/ClaudeCodeRuntime").then(m => ({ default: m.ClaudeCodeRuntime })));
+
+// Core Learning Shells (Hebrew-first, RTL)
+const ClaudeCodeLearning = lazy(() => import("./pages/learn/ClaudeCodeLearning").then(m => ({ default: m.ClaudeCodeLearning })));
+
 // Search modal is mounted globally but only loaded the first time it opens.
 const SearchModal = lazy(() => import("./components/search/SearchModal"));
 
@@ -108,6 +114,31 @@ function App() {
                     <Route path="coming-soon" element={<Navigate to="/" replace />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
+
+                {/* Independent Runtime Routes (outside main layout to prevent main layout wrapping) */}
+                <Route path="/runtime/claude-code" element={
+                    <ErrorBoundary>
+                        <Suspense fallback={<RouteFallback />}>
+                            <ClaudeCodeRuntime />
+                        </Suspense>
+                    </ErrorBoundary>
+                } />
+
+                {/* Core Learning Shell — immersive, no global Navbar/Footer */}
+                <Route path="/learn/claude-code" element={
+                    <ErrorBoundary>
+                        <Suspense fallback={<RouteFallback />}>
+                            <ClaudeCodeLearning />
+                        </Suspense>
+                    </ErrorBoundary>
+                } />
+                <Route path="/learn/claude-code/:lessonId" element={
+                    <ErrorBoundary>
+                        <Suspense fallback={<RouteFallback />}>
+                            <ClaudeCodeLearning />
+                        </Suspense>
+                    </ErrorBoundary>
+                } />
             </Routes>
         </>
     );

@@ -59,6 +59,33 @@ export default {
           green: "#10B981",
           amber: "#F59E0B",
         },
+        // Course-scoped palettes. Use these for Core Learning Shell theming
+        // instead of the neutralized indigo/amber tokens above.
+        "claude-code": {
+          50:  "#EEF0FF",
+          100: "#DCE0FF",
+          200: "#BCC2FF",
+          300: "#9099FB",
+          400: "#7B82F5",
+          500: "#6366F1",
+          600: "#4F46E5",
+          700: "#4338CA",
+          800: "#3730A3",
+          900: "#1F1B4D",
+          950: "#13123A",
+        },
+        "claude-101": {
+          50:  "#FFF7E6",
+          100: "#FEEBC2",
+          200: "#FDD98A",
+          300: "#FBC25A",
+          400: "#F9AE34",
+          500: "#F59E0B",
+          600: "#D97706",
+          700: "#B45309",
+          800: "#7C3D04",
+          900: "#3E1F02",
+        },
       },
       fontFamily: {
         sans: ['Heebo', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],

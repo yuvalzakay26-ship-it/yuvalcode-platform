@@ -30,7 +30,9 @@
       "Bash(grep -E \"\\(audience|src\\\\\\\\\\\\\\\\components\\\\\\\\\\\\\\\\audience|src\\\\\\\\\\\\\\\\lib\\\\\\\\\\\\\\\\audience|src\\\\\\\\\\\\\\\\pages\\\\\\\\\\\\\\\\\\(Home|AI|Projects|Content|Stack|ContentEntry\\)\\)\")",
       "Bash(npx --no-install eslint src/components/Navbar.jsx)",
       "Bash(npx --no-install eslint src/components/Navbar.jsx --rule '{\"no-unused-vars\": \"off\"}')",
-      "Bash(npx --no-install vite build)"
+      "Bash(npx --no-install vite build)",
+      "Bash(python -c \"import sys,json; pkg=json.load\\(sys.stdin\\); print\\(json.dumps\\(pkg.get\\('scripts',{}\\),indent=2\\)\\)\")",
+      "Bash(echo \"EXIT=$?\")"
     ]
   }
 }
